@@ -3,7 +3,12 @@ const server = express();
 const cors = require("cors");
 const dotenv = require("dotenv");
 
-server.use(cors());
+server.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 server.use(express.json());
 dotenv.config();
 
@@ -28,3 +33,9 @@ const start = async () => {
   }
 };
 start();
+
+server.get("/", (req, res) => {
+  res.status(200).json({
+    message: "success",
+  });
+});
