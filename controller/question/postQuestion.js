@@ -7,7 +7,7 @@ const postQuestion = async (req, res) => {
   const { userid, username, title, description } = req.body;
   try {
     await dbConnection.execute(
-      "INSERT INTO questions (questionid, userid,username, title, description) VALUES (?, ?, ?,?,?)",
+      "INSERT INTO questions (questionid, userid, title, description) VALUES (?, ?, ?,?)",
       [questionid, userid, username, title, description]
     );
     console.log("Question inserted successfully:");
