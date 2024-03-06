@@ -4,7 +4,7 @@ const allAnswers = async (req, res) => {
   const questionid = req.params.questionid;
   try {
     const results = await dbConnection.query(
-      "SELECT answerid, answer, users.username FROM answers  JOIN users  ON answers.userid = users.userid WHERE questionid = ?",
+      "SELECT answerid, answer, users.username FROM answers  JOIN users ON answers.userid = users.userid WHERE questionid = ?",
       [questionid]
     );
     res.json(results[0]);
