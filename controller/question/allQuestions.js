@@ -2,7 +2,9 @@ const dbConnection = require("../../dbConfig");
 
 const allQuestions = async (req, res) => {
   try {
-    const results = await dbConnection.query("SELECT * FROM questions");
+    const results = await dbConnection.query(
+      "SELECT *,users.username FROM questions JOIN users ON questions.userid = users.userid"
+    );
     res.json(results[0]);
   } catch (error) {
     console.error("Error fetching data:", error);
